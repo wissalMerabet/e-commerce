@@ -1,0 +1,90 @@
+[
+    {
+        "title": "iphone",
+        "imageSrc": "./assets/laptop.png",
+        "description": "This is a description for the iPhone category.",
+        "products": [
+            {
+                "name": "iPhone 14 Pro",
+                "price": 999,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "iPhone 14",
+                "price": 799,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "iPhone 13",
+                "price": 699,
+                "image": "../../assets/laptop.png"
+            }
+        ]
+    },
+    {
+        "title": "tablets",
+        "imageSrc": "./assets/laptop.png",
+        "description": "This is a description for the Tablets category.",
+        "products": [
+            {
+                "name": "iPad Pro",
+                "price": 1099,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "Samsung Galaxy Tab S8",
+                "price": 699,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "Microsoft Surface Pro 8",
+                "price": 899,
+                "image": "../../assets/laptop.png"
+            }
+        ]
+    },
+    {
+        "title": "headphones",
+        "imageSrc": "./assets/laptop.png",
+        "description": "This is a description for the Headphones category.",
+        "products": [
+            {
+                "name": "AirPods Pro",
+                "price": 249,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "Sony WH-1000XM4",
+                "price": 349,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "Bose QuietComfort 35 II",
+                "price": 299,
+                "image": "../../assets/laptop.png"
+            }
+        ]
+    },
+    {
+        "title": "laptops",
+        "imageSrc": "./assets/laptop.png",
+        "description": "This is a description for the Laptops category.",
+        "products": [
+            {
+                "name": "MacBook Air M2",
+                "price": 1199,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "Dell XPS 13",
+                "price": 999,
+                "image": "../../assets/laptop.png"
+            },
+            {
+                "name": "HP Spectre x360",
+                "price": 1099,
+                "image": "../../assets/laptop.png"
+            }
+        ]
+    }
+]
