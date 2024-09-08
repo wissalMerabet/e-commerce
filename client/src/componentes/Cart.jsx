@@ -3,13 +3,22 @@ import Axios from "axios";
 
 export const Cart = () => {
   const [cart, setCarts] = useState([]);
+  const USERID = window.localStorage.getItem("userID");
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/Cart").then((Response) => {
-      setCarts(Response.data);
-      console.log("all products in cart : ", cart);
-    });
-  }, []);
+    if (USERID) {
+      Axios.get(`http://localhost:3000/Cart?userID=${USERID}`)
+        .then((response) => {
+          setCarts(response.data);
+          console.log("All products in cart: ", response.data.length);
+        })
+        .catch((error) => {
+          console.error("Error fetching cart items: ", error);
+        });
+    }
+  }, [USERID]); // Ensure USERID is in the dependency array
+
+
 
   return (
     <div>

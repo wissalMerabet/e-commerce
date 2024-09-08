@@ -1,7 +1,7 @@
 [
     {
-        "title": "iphone",
-        "imageSrc": "./assets/laptop.png",
+        "title": "Men",
+        "imageSrc": "./assets/man.png",
         "description": "This is a description for the iPhone category.",
         "products": [
             {
@@ -22,7 +22,7 @@
         ]
     },
     {
-        "title": "tablets",
+        "title": "Women",
         "imageSrc": "./assets/laptop.png",
         "description": "This is a description for the Tablets category.",
         "products": [
@@ -44,7 +44,7 @@
         ]
     },
     {
-        "title": "headphones",
+        "title": "Boys",
         "imageSrc": "./assets/laptop.png",
         "description": "This is a description for the Headphones category.",
         "products": [
@@ -66,7 +66,7 @@
         ]
     },
     {
-        "title": "laptops",
+        "title": "Girls",
         "imageSrc": "./assets/laptop.png",
         "description": "This is a description for the Laptops category.",
         "products": [

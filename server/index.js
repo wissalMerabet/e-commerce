@@ -6,7 +6,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const app = express();
 app.use(express.json());
-app.use(cors());
+//*app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Adjust according to your frontend port
+}));
+
 
 ////!
 
@@ -26,7 +30,6 @@ mongoose
   .catch((error) => {
     console.log("error with connecting with the DB ", error);
   });
-
 
 //! models:
 
@@ -57,11 +60,13 @@ app.post("/login", async (req, res) => {
 
   const token = jwt.sign({ id: user._id }, "wissal");
   res.json({ token, userID: user._id });
+
 });
 
 //********************************** product*/
 
 app.get("/products", async (req, res) => {
+
   const product = await Product.find();
   //console.log("the products are", product);
   res.json(product);
@@ -70,9 +75,23 @@ app.get("/products", async (req, res) => {
 //********************************** Cart*/
 
 app.get("/Cart", async (req, res) => {
-  const cart = await Cart.find();
-  //console.log("the products are", Cart);
-  res.json(cart);
+  const { userID } = req.query; // Use req.query to get query parameters
+
+  if (!userID) {
+    return res.status(400).json({ message: "UserID is required" });
+  }
+
+  try {
+    const cartItems = await Cart.find({ user_id: userID });
+    //console.log(cartItems.length);
+    
+    if (cartItems.length === 0) {
+      return res.status(404).json({ message: "No items found in cart" });
+    }
+    res.json(cartItems);
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", error });
+  }
 });
 
 app.post("/cart", async (req, res) => {
@@ -98,17 +117,24 @@ app.post("/cart", async (req, res) => {
       name,
       price,
       image,
-      
     });
 
     await newCartItem.save();
+
+    
     res.status(200).json({ message: "Product added to cart successfully" });
+
+    
+
+
   } catch (error) {
     res.status(500).json({ message: "Internal server error", error });
   }
 });
 
-//! listening 
+
+
+//! listening
 
 app.listen(_Port, () => {
   console.log(`Server is listening on port ${_Port}`);

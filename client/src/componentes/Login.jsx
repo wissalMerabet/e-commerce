@@ -15,7 +15,7 @@ export const Login = () => {
   const handleLogin = async(e) => {
     e.preventDefault();
     const response = await Axios.post("http://localhost:3000/login", { email, password });
-    
+    console.log(response.data)
     window.localStorage.setItem("userID" , response.data.userID);
     navigate('/'); 
     
