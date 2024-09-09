@@ -34,8 +34,8 @@ mongoose
 //! models:
 
 const User = require("./models/users");
-const Product = require("./models/product");
 const Cart = require("./models/cart");
+const Product = require("./models/product");
 
 //!EndPoint:
 
@@ -70,6 +70,45 @@ app.get("/products", async (req, res) => {
   const product = await Product.find();
   //console.log("the products are", product);
   res.json(product);
+});
+
+
+app.post("/Product", async (req, res) => {
+  const { categorie, name, price, image } = req.body;
+
+  console.log("Received data:", req.body);
+
+  if (!categorie || !name || !price || !image) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  try {
+    // Check if the product already exists in the cart for this user
+    const existingCartItem = await Cart.findOne({name});
+
+    if (existingCartItem) {
+      return res.status(400).json({ message: "Product already in cart" });
+    }
+
+    // If not, add it to the cart
+    const newProduct = new Product({
+      categorie,
+      name,
+      price,
+      image,
+    });
+
+    await newProduct.save();
+
+    
+    res.status(200).json({ message: "Product added successfully" });
+
+    
+
+
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", error });
+  }
 });
 
 //********************************** Cart*/
