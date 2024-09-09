@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const AllProduct = () => {
   const [products, setProducts] = useState([]);
@@ -43,7 +44,7 @@ export const AllProduct = () => {
       <h1 className="text-3xl font-bold text-center text-red-600">Products</h1>
       <div className="grid grid-cols-1 w-full md:grid-cols-4 p-14">
         {products.map((product, index) => (
-          <div
+          <Link to="/Productdetails"
             key={index}
             className="flex flex-col items-center m-6 space-y-2 border-2 border-red-600 rounded-xl p-5"
           >
@@ -60,7 +61,7 @@ export const AllProduct = () => {
             >
               Add to Cart
             </button>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

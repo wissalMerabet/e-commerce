@@ -10,13 +10,13 @@ export const Cart = () => {
       Axios.get(`http://localhost:3000/Cart?userID=${USERID}`)
         .then((response) => {
           setCarts(response.data);
-          console.log("All products in cart: ", response.data.length);
+          //console.log("All products in cart: ", response.data.length);
         })
         .catch((error) => {
           console.error("Error fetching cart items: ", error);
         });
     }
-  }, [USERID]); // Ensure USERID is in the dependency array
+  }, [USERID]);
 
 
 
