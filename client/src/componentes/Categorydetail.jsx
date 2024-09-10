@@ -1,31 +1,36 @@
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios'; // Ensure Axios is imported
-
+import React, { useState, useEffect } from "react";
+import Axios from "axios"; // Ensure Axios is imported
 
 const CategoryDetail = () => {
   const { categoryName } = useParams(); // Get the category name from the URL
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    Axios.get('http://localhost:3000/products')
-      .then(response => {
+    Axios.get("http://localhost:3000/products")
+      .then((response) => {
         setProducts(response.data);
         console.log("Products fetched successfully:", response.data);
       })
-      .catch(error => {
-        console.error('Error fetching the products:', error);
+      .catch((error) => {
+        console.error("Error fetching the products:", error);
       });
   }, []);
 
   // Find the category based on the category name in the URL
-  const category = products.filter((product) => product.categorie.toLowerCase() === categoryName.toLowerCase());
+  const category = products.filter(
+    (product) => product.categorie.toLowerCase() === categoryName.toLowerCase()
+  );
 
   // If the category does not exist or there are no matching products, return an error message
   if (!category || category.length === 0) {
     return <div>Category not found or no products available!</div>;
   }
-return (
+
+  
+
+
+  return (
     <div className="bg-red-50 p-10">
       <h1 className="font-bold text-center">{categoryName.toUpperCase()}</h1>
       <div className="flex flex-row justify-center space-x-16 p-14">
@@ -42,9 +47,7 @@ return (
               />
               <h2 className="text-xl font-bold">{product.name}</h2>
               <p className="text-gray-700">${product.price}</p>
-              <a href="#" className="bg-red-600 p-2 rounded-2xl text-white">
-                Add to Cart
-              </a>
+              
             </div>
           );
         })}

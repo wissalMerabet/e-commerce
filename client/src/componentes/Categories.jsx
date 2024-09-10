@@ -7,7 +7,7 @@ export const Categories = () => {
   
 
   return (
-    <div className="bg-red-50 p-10">
+    <div className="p-10">
       <h1 className="text-3xl font-bold text-center text-red-600">
         Categories
       </h1>

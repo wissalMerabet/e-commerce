@@ -1,15 +1,12 @@
-
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 
-
-
-export const Login = () => {
-  const [email , setEmail] = useState("");
-  const [password , setPassword] = useState("");
+export const Login = ({ setIsLoggedIn }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
 
 
   const handleLogin = async(e) => {
@@ -17,18 +14,15 @@ export const Login = () => {
     const response = await Axios.post("http://localhost:3000/login", { email, password });
     console.log(response.data)
     window.localStorage.setItem("userID" , response.data.userID);
+    setIsLoggedIn(true);
     navigate('/'); 
     
   }
 
-
-
-
-
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="border-2 border-red-600 p-6 rounded-xl w-full max-w-md flex flex-col">
-        <form className="w-full flex flex-col">
+        <form className="w-full flex flex-col" onSubmit={handleLogin}>
           <h1 className="font-bold text-3xl text-center text-red-600">Login</h1>
 
           <div className="mt-4">
@@ -56,11 +50,7 @@ export const Login = () => {
           </div>
 
           <div className="mt-4">
-            <button
-              type="submit"
-              className="bg-red-600 px-6 py-2 rounded-2xl text-white w-full"
-              onClick={handleLogin}
-            >
+            <button type="submit" className="bg-red-600 px-6 py-2 rounded-2xl text-white w-full">
               Send
             </button>
           </div>

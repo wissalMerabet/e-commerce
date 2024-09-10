@@ -72,6 +72,22 @@ app.get("/products", async (req, res) => {
   res.json(product);
 });
 
+app.get('/products/:id', async (req, res) => {
+  const { id } = req.params; // Get the ID directly from req.params
+
+  try {
+      const product = await Product.findById(id); // Pass id directly
+      if (!product) {
+          return res.status(404).json({ message: 'Product not found' });
+      }
+      res.json(product);
+  } catch (error) {
+      console.error('Error fetching product by ID:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 
 app.post("/Product", async (req, res) => {
   const { categorie, name, price, image } = req.body;
@@ -134,11 +150,11 @@ app.get("/Cart", async (req, res) => {
 });
 
 app.post("/cart", async (req, res) => {
-  const { userID, name, price, image } = req.body;
+  const { userID, name, price, image ,size , quantity } = req.body;
 
   console.log("Received data:", req.body);
 
-  if (!userID || !name || !price || !image) {
+  if (!userID || !name || !price || !image || !size  || !quantity) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -156,6 +172,8 @@ app.post("/cart", async (req, res) => {
       name,
       price,
       image,
+      size,
+      quantity,
     });
 
     await newCartItem.save();
