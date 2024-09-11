@@ -3,31 +3,40 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NavBar } from "./componentes/NavBar";
 import { Hero } from "./componentes/Hero";
 import { Categories } from "./componentes/Categories";
-import { Contact } from "./componentes/contact";
 import { Footer } from "./componentes/footer";
-import { Product } from "./componentes/Product";
+import CategoryDetail from "./componentes/CategoryDetail";
+import { Productdetails } from "./componentes/Productdetails";
+import { Cart } from "./componentes/Cart";
 import { Signup } from "./componentes/Signup";
 import { Login } from "./componentes/Login";
-import CategoryDetail from "./componentes/CategoryDetail";
-import { Cart } from "./componentes/Cart";
-import { AllProduct } from "./componentes/allProduct";
-import { Productdetails } from "./componentes/Productdetails";
+import Axios from 'axios';
+import { AllProduct } from './componentes/allProduct';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
+  // Check if user is logged in when the app loads
   useEffect(() => {
-    // Check if userID exists in localStorage on page load
     const userID = window.localStorage.getItem("userID");
     if (userID) {
-      setIsLoggedIn(true); // Set user as logged in if userID exists
+      setIsLoggedIn(true);
+      // Fetch the cart count when the user is logged in
+      Axios.get(`http://localhost:3000/Cart?userID=${userID}`)
+        .then(response => {
+          setCartItemCount(response.data.length);
+        })
+        .catch(error => {
+          console.error("Error fetching cart count:", error);
+        });
     }
   }, []);
 
   return (
     <div className="bg-white">
       <BrowserRouter>
-        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        {/* Pass the cart count and setCartItemCount to NavBar */}
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} cartItemCount={cartItemCount} />
         <Routes>
           <Route
             path="/"
@@ -41,20 +50,22 @@ export default function App() {
             }
           />
           <Route
-            path="/Categories/:categoryName"
+            path="/Productdetails/:id"
             element={
               <>
-                <Hero />
-                <CategoryDetail />
+                {/* Pass setCartItemCount to Productdetails */}
+                <Productdetails setCartItemCount={setCartItemCount} />
                 <Footer />
               </>
             }
           />
           <Route
-            path="/Productdetails/:id"
+            path="/Categories/:categoryName"
             element={
               <>
-                <Productdetails />
+                <NavBar />
+                <Hero />
+                <CategoryDetail />
                 <Footer />
               </>
             }

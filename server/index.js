@@ -150,17 +150,17 @@ app.get("/Cart", async (req, res) => {
 });
 
 app.post("/cart", async (req, res) => {
-  const { userID, name, price, image ,size , quantity } = req.body;
+  const { user_id, name, price, image, size, quantity } = req.body;
 
   console.log("Received data:", req.body);
 
-  if (!userID || !name || !price || !image || !size  || !quantity) {
+  if (!user_id || !name || !price || !image || !size || !quantity) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
   try {
     // Check if the product already exists in the cart for this user
-    const existingCartItem = await Cart.findOne({ user_id: userID, name });
+    const existingCartItem = await Cart.findOne({ user_id, name });
 
     if (existingCartItem) {
       return res.status(400).json({ message: "Product already in cart" });
@@ -168,7 +168,7 @@ app.post("/cart", async (req, res) => {
 
     // If not, add it to the cart
     const newCartItem = new Cart({
-      user_id: userID,
+      user_id,
       name,
       price,
       image,
@@ -178,16 +178,12 @@ app.post("/cart", async (req, res) => {
 
     await newCartItem.save();
 
-    
     res.status(200).json({ message: "Product added to cart successfully" });
-
-    
-
-
   } catch (error) {
     res.status(500).json({ message: "Internal server error", error });
   }
 });
+
 
 
 

@@ -33,22 +33,22 @@ export const AllProduct = () => {
   
 
   return (
-    <div className="relative max-w-7xl overflow-hidden">
-      <h1 className="text-3xl font-bold text-center text-red-600">Products</h1>
-      <div className="scroll-content flex space-x-16 animate-loop-scroll paused">
+    <div className="container mx-auto max-w-7xl">
+      <h1 className="text-3xl font-bold text-center text-Green mb-14">Products</h1>
+      <div className="scroll-content flex space-x-14 animate-loop-scroll paused">
         {products.map((product, index) => (
           <Link to={`/Productdetails/${product._id}`} 
             key={index}
-            className=" inline-block bg-BgGray rounded-md"
+            className=" inline-block bg-BgGray  rounded-t-lg border-2 border-gray-300 "
 
           >
             <img
               src={`../../assets/${product.image}`}
               alt={product.name}
-              className="w-48 h-48 object-cover rounded-md"
+              className="w-48 h-48 object-cover rounded-t-lg"
             />
-            <div className="mt-2 text-center">
-              <h2 className=" ">{product.name}</h2>
+            <div className="mt-2 text-center p-4">
+              <h2 className="text-lg font-semibold ">{product.name}</h2>
               <p className="text-red-600">{product.price} DZ</p>
 
             </div>

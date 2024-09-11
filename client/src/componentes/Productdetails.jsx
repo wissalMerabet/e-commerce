@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 
-export const Productdetails = () => {
+export const Productdetails = ({ setCartItemCount }) => {
   const USERID = window.localStorage.getItem("userID");
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -33,8 +33,13 @@ export const Productdetails = () => {
   }, [id]);
 
   const addToCart = (product) => {
+    if (!selectedSize) {
+      alert("Please select a size.");
+      return;
+    }
+
     Axios.post("http://localhost:3000/cart", {
-      userID: USERID,
+      user_id: USERID,
       name: product.name,
       price: product.price,
       image: product.image,
@@ -43,9 +48,19 @@ export const Productdetails = () => {
     })
       .then(() => {
         alert("Product added to cart!");
+
+        // Fetch updated cart count
+        Axios.get(`http://localhost:3000/cart?userID=${USERID}`)
+          .then((response) => {
+            setCartItemCount(response.data.length); // Update cart item count
+          })
+          .catch((error) => {
+            console.error("Error fetching updated cart count:", error);
+          });
       })
       .catch((error) => {
         console.error("Error adding product to cart:", error);
+        alert("Error adding product to cart.");
       });
   };
 

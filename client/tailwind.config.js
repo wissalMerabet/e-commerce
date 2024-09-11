@@ -11,7 +11,7 @@ export default {
       },
       colors: {
         BgGray: '#e5e8e8',
-        bgYellow:'#FFEF00',
+        Green:'#28a745',
         
       },
       animation: {
@@ -20,7 +20,7 @@ export default {
       keyframes: {
         scroll: {
           '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },
