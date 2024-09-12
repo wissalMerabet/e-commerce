@@ -11,8 +11,8 @@ export default {
       },
       colors: {
         BgGray: '#e5e8e8',
-        Green:'#28a745',
-        
+        Green: '#28a745',
+        gray: '#212f3d',
       },
       animation: {
         'loop-scroll': 'scroll 80s linear infinite',
@@ -20,7 +20,7 @@ export default {
       keyframes: {
         scroll: {
           '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
     },

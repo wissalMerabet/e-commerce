@@ -71,16 +71,16 @@ export const Productdetails = ({ setCartItemCount }) => {
   const availableSizes = ["S", "M", "L", "XL"];
 
   return (
-    <div className="container mx-auto p-12">
-      <h1 className="text-3xl font-bold text-center text-red-600">Product Details</h1>
+    <div className="container mx-auto m-32 ">
+      <h1 className="text-3xl font-bold text-center text-Green pb-10">Product Details</h1>
 
-      <div className="flex flex-row space-x-6 p-8">
+      <div className="flex flex-col  md:flex-row  md:space-x-6 space-y-16 space-x-0 md:space-y-0 p-10">
         <div className="flex flex-col">
-          <img src={`../../assets/${product.image}`} alt={product.name} className="w-full h-auto" />
+          <img src={`../../assets/${product.image}`} alt={product.name} className="w-48 h-48 md:w-96 md:h-96 object-cover rounded-lg" />
           <ul className="flex space-x-2 mt-4">
             {Array(4).fill(product.image).map((image, index) => (
               <li key={index}>
-                <img src={`../../assets/${image}`} alt={`${product.name} preview`} className="w-16 h-16 object-cover" />
+                <img src={`../../assets/${image}`} alt={`${product.name} preview`} className="w-16 h-16 object-cover rounded-lg" />
               </li>
             ))}
           </ul>
@@ -88,14 +88,14 @@ export const Productdetails = ({ setCartItemCount }) => {
 
         <div className="flex flex-col space-y-4">
           <h3 className="font-bold text-3xl">{product.name}</h3>
-          <h4 className="text-xl text-red-600">{product.price} DZ</h4>
+          <h4 className="text-xl text-red-600 font-semibold">{product.price} DZ</h4>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
           </p>
 
           <div className="flex flex-row space-x-6">
             <label className="text-lg font-medium">Size:</label>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-row items-center space-x-2">
               {availableSizes.map((size) => (
                 <label key={size} className="flex items-center space-x-2">
                   <input
@@ -114,7 +114,7 @@ export const Productdetails = ({ setCartItemCount }) => {
 
           <div className="flex flex-row space-x-4 items-center">
             <button
-              className="rounded-full bg-gray-200 px-3 py-1"
+              className="rounded-full bg-zinc-300 px-3 py-1"
               onClick={() => handleQuantityChange(-1)}
             >
               -
@@ -122,17 +122,17 @@ export const Productdetails = ({ setCartItemCount }) => {
             <input
               type="text"
               value={quantity}
-              className="w-12 h-10 text-center border-2 border-gray-300 rounded-lg"
+              className="w-12 h-10 text-center border-2 border-gray-200 rounded-full"
               readOnly
             />
             <button
-              className="rounded-full bg-gray-200 px-3 py-1"
+              className="rounded-full bg-zinc-300 px-3 py-1"
               onClick={() => handleQuantityChange(1)}
             >
               +
             </button>
             <button
-              className="bg-red-600 p-2 rounded-2xl text-white"
+              className="bg-Green p-2 rounded-2xl text-white hover:bg-green-700"
               onClick={() => addToCart(product)}
             >
               Add to Cart

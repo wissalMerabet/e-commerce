@@ -21,23 +21,26 @@ export const Cart = () => {
 
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center text-red-600">
+    <div className="m-40">
+      <h1 className="text-3xl font-bold text-center text-Green">
         Product added
       </h1>
-      <div className="grid grid-cols-1 w-full md:grid-cols-4 p-14">
+      <div className="flex flex-row justify-center space-x-16 p-14">
         {cart.map((product, index) => (
           <div
             key={index}
-            className="flex flex-col items-center m-6 space-y-2 border-2 border-red-600 rounded-xl p-5"
+            className=" inline-block bg-BgGray  rounded-t-lg border-2 border-stone-300 "
           >
             <img
               src={`../../assets/${product.image}`}
               alt={product.name}
-              className="w-20 h-35"
+              className="w-48 h-48 object-cover rounded-t-lg"
             />
-            <h2 className="text-xl font-bold">{product.name}</h2>
-            <p className="text-gray-700">${product.price}</p>
+            <div className="mt-2 text-center p-4">
+              <h2 className="text-lg font-semibold ">{product.name}</h2>
+              <p className="text-red-600">{product.price} DZ</p>
+
+            </div>
           </div>
         ))}
       </div>

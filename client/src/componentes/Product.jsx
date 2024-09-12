@@ -1,5 +1,5 @@
-import React from "react";
-import categories from "../data/Categories.json";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import { Link } from "react-router-dom";
 
 const shuffleArray = (array) => {
@@ -11,34 +11,58 @@ const shuffleArray = (array) => {
 };
 
 export const Product = () => {
-  
-  const allProducts = categories.flatMap((category) => category.products);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const USERID = window.localStorage.getItem("userID");
+
+  useEffect(() => {
+    Axios.get("http://localhost:3000/products")
+      .then((response) => {
+        setProducts(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching the products:", error);
+        setError("Failed to fetch products.");
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Loading products...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  const shuffledProducts = shuffleArray([...products]);
+  const selectedProducts = shuffledProducts.slice(0, 6);
 
   
-  const shuffledProducts = shuffleArray([...allProducts]);
-
-  // Select only the first 8 products
-  const selectedProducts = shuffledProducts.slice(0, 8);
 
   return (
-    <div className=" bg-red-50 p-20">
-      <h1 className="text-3xl font-bold text-center text-red-600">Products</h1>
-      <div className="grid grid-cols-1 w-full md:grid-cols-4 p-14">
+    <div className="container mx-auto max-w-7xl m-32">
+      <h1 className="text-3xl font-bold text-center text-Green mb-14">
+        soma Of our Products
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-4 m-4">
         {selectedProducts.map((product, index) => (
-          <Link to="/Productdetails"
+          <Link
+            to={`/Productdetails/${product._id}`}
             key={index}
-            className="flex flex-col items-center m-6 space-y-2 border-2 border-red-600 rounded-xl p-5"
+            className=" bg-BgGray  rounded-t-lg border-2 border-stone-300 m-20 md:m-4 shadaw"
           >
             <img
-              src={product.image}
+              src={`../../assets/${product.image}`}
               alt={product.name}
-              className="w-20 h-35"
+              className="w-full h-80 rounded-xl"
             />
-            <h2 className="text-xl font-bold">{product.name}</h2>
-            <p className="text-gray-700">${product.price}</p>
-            <button href="#" className="bg-red-600 p-2 rounded-2xl text-white">
-              add to cart
-            </button>
+            <div className="mt-2 text-center p-4">
+              <h2 className="text-lg font-semibold ">{product.name}</h2>
+              <p className="text-red-600 font-semibold">{product.price} DZ</p>
+            </div>
           </Link>
         ))}
       </div>

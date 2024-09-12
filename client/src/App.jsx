@@ -11,6 +11,8 @@ import { Signup } from "./componentes/Signup";
 import { Login } from "./componentes/Login";
 import Axios from 'axios';
 import { AllProduct } from './componentes/allProduct';
+import { Product } from './componentes/Product';
+import { Contact } from './componentes/contact';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,8 +45,10 @@ export default function App() {
             element={
               <>
                 <Hero />
+                
                 <AllProduct />
                 <Categories />
+                <Contact />
                 <Footer />
               </>
             }
@@ -55,6 +59,7 @@ export default function App() {
               <>
                 {/* Pass setCartItemCount to Productdetails */}
                 <Productdetails setCartItemCount={setCartItemCount} />
+                <Product />
                 <Footer />
               </>
             }
@@ -75,6 +80,7 @@ export default function App() {
             element={
               <>
                 <Cart />
+                
                 <Footer />
               </>
             }

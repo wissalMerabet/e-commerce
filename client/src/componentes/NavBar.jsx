@@ -26,8 +26,8 @@ export const NavBar = ({ isLoggedIn, setIsLoggedIn ,cartItemCount }) => {
 
         <ul className="hidden md:flex space-x-8">
           <li><a href="/" className="hover:text-Green">Home</a></li>
-          <li><a href="/categories" className="hover:text-Green">Categories</a></li>
-          <li><a href="/products" className="hover:text-Green">Products</a></li>
+          <li><a href="#products" className="hover:text-Green">Products</a></li>
+          <li><a href="#categories" className="hover:text-Green">Categories</a></li>
           <li>
             <Link to="/Cart" className="relative flex items-center">
               <FontAwesomeIcon icon={faCartShopping} className="w-5 h-5 bg-gray-200 ring-1 ring-slate-900 rounded-full p-1.5 hover:text-Green" />
@@ -60,11 +60,11 @@ export const NavBar = ({ isLoggedIn, setIsLoggedIn ,cartItemCount }) => {
           />
         </div>
 
-        <div className={`md:hidden ${menu ? 'block' : 'hidden'} absolute top-16 left-0 w-full p-7 bg-red-100 rounded-b-3xl shadow-lg`}>
+        <div className={`md:hidden ${menu ? 'block' : 'hidden'} absolute top-16 left-0 w-full p-7 bg-white rounded-b-3xl shadow-lg`}>
           <ul className="space-y-7">
             <li><a href="/" className="hover:text-Green">Home</a></li>
-            <li><a href="/categories" className="hover:text-Green">Categories</a></li>
-            <li><a href="/products" className="hover:text-Green">Products</a></li>
+            <li><a href="#products" className="hover:text-Green">Products</a></li>
+            <li><a href="#categories" className="hover:text-Green">Categories</a></li>
             <li>
               {!isLoggedIn ? (
                 <Link to="/login" className="block bg-Green px-3 py-2 rounded-2xl text-white text-center hover:bg-Green">

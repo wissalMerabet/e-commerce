@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -12,15 +12,15 @@ export const Signup = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen ">
-      <div className="border-2 border-red-600 p-6 rounded-xl w-full max-w-md flex flex-col bg-white">
-        <h1 className="font-bold text-3xl text-red-600 text-center">Signup</h1>
+      <div className="border-2 border-Green p-6 rounded-xl w-full max-w-md flex flex-col bg-white">
+        <h1 className="font-bold text-3xl text-Green text-center">Signup</h1>
 
         <form className="flex flex-col mt-4">
           <div className="mt-4">
             <input
               type="text"
               placeholder="Name"
-              className="bg-red-50 p-4 border-2 border-red-600 w-full rounded-xl"
+              className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
           </div>
@@ -29,7 +29,7 @@ export const Signup = () => {
             <input
               type="email"
               placeholder="Email"
-              className="bg-red-50 p-4 border-2 border-red-600 w-full rounded-xl"
+              className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
           </div>
@@ -38,7 +38,7 @@ export const Signup = () => {
             <input
               type="password"
               placeholder="Password"
-              className="bg-red-50 p-4 border-2 border-red-600 w-full rounded-xl"
+              className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
           </div>
@@ -47,7 +47,7 @@ export const Signup = () => {
             <input
               type="password"
               placeholder="Confirm Password"
-              className="bg-red-50 p-4 border-2 border-red-600 w-full rounded-xl"
+              className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
           </div>
@@ -55,7 +55,7 @@ export const Signup = () => {
           <div className="mt-4">
             <button
               type="submit"
-              className="bg-red-600 px-6 py-2 rounded-2xl text-white w-full"
+              className="bg-Green px-6 py-2 rounded-2xl text-white w-full"
             >
               Sign Up
             </button>
@@ -63,7 +63,7 @@ export const Signup = () => {
         </form>
 
         <div className="mt-4 text-center">
-          Already have an account? <Link to="/login" className="text-red-600 font-bold">Login</Link>
+          Already have an account? <Link to="/login" className="text-Green font-bold">Login</Link>
         </div>
       </div>
     </div>
