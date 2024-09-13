@@ -27,7 +27,7 @@ export const Signup = () => {
       <div className="border-2 border-Green p-6 rounded-xl w-full max-w-md flex flex-col bg-white">
         <h1 className="font-bold text-3xl text-Green text-center">Signup</h1>
 
-        <form className="flex flex-col mt-4">
+        <form className="flex flex-col mt-6">
           <div className="mt-4">
             <input
               type="text"
