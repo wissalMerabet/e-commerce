@@ -9,7 +9,7 @@ export const Login = ({ setIsLoggedIn }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await Axios.post("http://localhost:3000/login", {
+    const response = await Axios.post("https://e-commerce-7os1.onrender.com/login", {
       email,
       password,
     });

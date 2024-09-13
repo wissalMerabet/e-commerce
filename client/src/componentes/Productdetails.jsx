@@ -21,7 +21,7 @@ export const Productdetails = ({ setCartItemCount }) => {
 
   useEffect(() => {
     setLoading(true);
-    Axios.get(`http://localhost:3000/products/${id}`)
+    Axios.get(`https://e-commerce-7os1.onrender.com/products/${id}`)
       .then((response) => {
         setProduct(response.data);
         setLoading(false);
@@ -38,7 +38,7 @@ export const Productdetails = ({ setCartItemCount }) => {
       return;
     }
 
-    Axios.post("http://localhost:3000/cart", {
+    Axios.post("https://e-commerce-7os1.onrender.com/cart", {
       user_id: USERID,
       name: product.name,
       price: product.price,
@@ -50,7 +50,7 @@ export const Productdetails = ({ setCartItemCount }) => {
         alert("Product added to cart!");
 
         // Fetch updated cart count
-        Axios.get(`http://localhost:3000/cart?userID=${USERID}`)
+        Axios.get(`https://e-commerce-7os1.onrender.com/cart?userID=${USERID}`)
           .then((response) => {
             setCartItemCount(response.data.length); // Update cart item count
           })

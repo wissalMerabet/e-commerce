@@ -8,7 +8,7 @@ export const CategoryDetail = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/products")
+    Axios.get("https://e-commerce-7os1.onrender.com/products")
       .then((response) => {
         setProducts(response.data);
         console.log("Products fetched successfully:", response.data);

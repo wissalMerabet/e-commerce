@@ -17,7 +17,7 @@ export const Product = () => {
   const USERID = window.localStorage.getItem("userID");
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/products")
+    Axios.get("https://e-commerce-7os1.onrender.com/products")
       .then((response) => {
         setProducts(response.data);
         setLoading(false);

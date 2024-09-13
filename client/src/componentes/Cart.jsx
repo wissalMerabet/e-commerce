@@ -7,7 +7,7 @@ export const Cart = () => {
 
   useEffect(() => {
     if (USERID) {
-      Axios.get(`http://localhost:3000/Cart?userID=${USERID}`)
+      Axios.get(`https://e-commerce-7os1.onrender.com/Cart?userID=${USERID}`)
         .then((response) => {
           setCarts(response.data);
           //console.log("All products in cart: ", response.data.length);

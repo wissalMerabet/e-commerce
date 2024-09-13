@@ -12,7 +12,7 @@ export const Signup = () => {
 
   function createUser(e) {
     e.preventDefault(); 
-    Axios.post("http://localhost:3000/signUp", { name, email, password })
+    Axios.post("https://e-commerce-7os1.onrender.com/signUp", { name, email, password })
       .then(res => {
         console.log(res.data);
         navigate("/login");

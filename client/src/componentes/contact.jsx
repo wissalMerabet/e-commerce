@@ -21,7 +21,7 @@ export const Contact = () => {
       return;
     }
 
-    Axios.post("http://localhost:3000/sendMsg", {
+    Axios.post("https://e-commerce-7os1.onrender.com/sendMsg", {
       name,
       email,
       message,
