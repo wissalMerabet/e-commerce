@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 //*app.use(cors());
 app.use(cors({
-  origin: 'http://localhost:5173', // Adjust according to your frontend port
+  origin: 'https://ecommerce-fullstack-web-site.netlify.app/', // Adjust according to your frontend port
 }));
 
 
