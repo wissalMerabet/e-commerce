@@ -8,8 +8,9 @@ const app = express();
 app.use(express.json());
 //*app.use(cors());
 app.use(cors({
-  origin: 'https://ecommerce-fullstack-web-site.netlify.app/', // Adjust according to your frontend port
+  origin: 'https://ecommerce-fullstack-web-site.netlify.app', // No trailing slash
 }));
+
 
 
 ////!
