@@ -7,7 +7,7 @@ export const Categories = () => {
   
 
   return (
-    <div className="container mx-auto p-10 m-20" id="categories" >
+    <div className="container mx-auto m-20" id="categories" >
       <h1 className="text-3xl font-bold text-center text-Green">
         Categories
       </h1>

@@ -36,6 +36,7 @@ mongoose
 const User = require("./models/users");
 const Cart = require("./models/cart");
 const Product = require("./models/product");
+const Message = require('./models/message');
 
 //!EndPoint:
 
@@ -181,6 +182,26 @@ app.post("/cart", async (req, res) => {
     res.status(200).json({ message: "Product added to cart successfully" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error", error });
+  }
+});
+
+//**********************************************message */
+
+app.post('/sendMsg', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  const newMsg = new Message({ name, email, message });
+
+  try {
+    await newMsg.save();
+    res.status(201).json({ reply: "Message created successfully" });
+  } catch (error) {
+    console.error("Error saving message:", error);
+    res.status(500).json({ error: "Failed to save message" });
   }
 });
 
