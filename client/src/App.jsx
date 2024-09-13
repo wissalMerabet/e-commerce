@@ -4,7 +4,7 @@ import { NavBar } from "./componentes/NavBar";
 import { Hero } from "./componentes/Hero";
 import { Categories } from "./componentes/Categories";
 import { Footer } from "./componentes/footer";
-import CategoryDetail from "./componentes/CategoryDetail";
+import {CategoryDetail} from "./componentes/CategoryDetail";
 import { Productdetails } from "./componentes/Productdetails";
 import { Cart } from "./componentes/Cart";
 import { Signup } from "./componentes/Signup";

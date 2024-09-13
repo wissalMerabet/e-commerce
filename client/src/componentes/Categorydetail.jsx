@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios"; // Ensure Axios is imported
 import { Link } from 'react-router-dom';
 
-const CategoryDetail = () => {
+export const CategoryDetail = () => {
   const { categoryName } = useParams(); // Get the category name from the URL
   const [products, setProducts] = useState([]);
 
@@ -62,4 +62,4 @@ const CategoryDetail = () => {
   );
 };
 
-export default CategoryDetail;
+
