@@ -32,7 +32,7 @@ export const CategoryDetail = () => {
 
 
   return (
-    <div className=" p-10">
+    <div className=" p-12">
       <h1 className="font-bold text-center text-slate-900">{categoryName.toUpperCase()}</h1>
       <div className="flex flex-row justify-center space-x-16 p-14">
         {category.map((product, index) => {
