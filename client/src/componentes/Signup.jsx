@@ -10,6 +10,18 @@ export const Signup = () => {
   const [password , setPassword] = useState("");
   const navigate = useNavigate();
 
+  function createUser(e) {
+    e.preventDefault(); 
+    Axios.post("http://localhost:3000/signUp", { name, email, password })
+      .then(res => {
+        console.log(res.data);
+        navigate("/login");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen ">
       <div className="border-2 border-Green p-6 rounded-xl w-full max-w-md flex flex-col bg-white">
@@ -20,6 +32,7 @@ export const Signup = () => {
             <input
               type="text"
               placeholder="Name"
+              onChange={(e) => setName(e.target.value)} 
               className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
@@ -29,6 +42,7 @@ export const Signup = () => {
             <input
               type="email"
               placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)} 
               className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
@@ -38,6 +52,7 @@ export const Signup = () => {
             <input
               type="password"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)} 
               className=" p-4 border-2 border-Green w-full rounded-xl"
               required
             />
@@ -55,6 +70,7 @@ export const Signup = () => {
           <div className="mt-4">
             <button
               type="submit"
+              onClick={createUser}
               className="bg-Green px-6 py-2 rounded-2xl text-white w-full"
             >
               Sign Up

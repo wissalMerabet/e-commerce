@@ -1,14 +1,11 @@
 import React from "react";
-import { useState, useEffect, FormEvent } from "react";
-import Axios from "axios";
-import AOS from "aos";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-export const Contact = () => {
+import Axios from "axios";
 
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+
+export const Contact = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +21,7 @@ export const Contact = () => {
       return;
     }
 
-    Axios.post("https://localhost:3000/sendMsg", {
+    Axios.post("http://localhost:3000/sendMsg", {
       name,
       email,
       message,
